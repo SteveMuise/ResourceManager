@@ -41,9 +41,16 @@ app.service('resourcesService', function () {
 
     };
 
+    this.roleStyle = function(id){
+      var resource = getResource(id);
+        return "card" + resource.role;
+
+    };
+
     var resources = [
         {
             id: 1, firstName: 'Lee', lastName: 'Carroll', address: '1234 Anywhere St.', city: 'Phoenix',
+            role: 'Manager',
             orders: [
                 { product: 'Basket', price: 29.99, quantity: 1, orderTotal: 29.99 },
                 { product: 'Yarn', price: 9.99, quantity: 1, orderTotal: 39.96 },
@@ -52,14 +59,16 @@ app.service('resourcesService', function () {
         },
         {
             id: 2, firstName: 'Jesse', lastName: 'Hawkins', address: '89 W. Center St.', city: 'Atlanta',
+            role: 'Manager',
             orders: [
                 { product: 'Table', price: 329.99, quantity: 1, orderTotal: 329.99 },
                 { product: 'Chair', price: 129.99, quantity: 4, orderTotal: 519.96 },
-                { product: 'Lamp', price: 89.99, quantity: 5, orderTotal: 449.95 },
+                { product: 'Lamp', price: 89.99, quantity: 5, orderTotal: 449.95 }
             ]
         },
         {
             id: 3, firstName: 'Charles', lastName: 'Sutton', address: '455 7th Ave.', city: 'Quebec',
+            role: 'Manager',
             orders: [
                 { product: 'Call of Duty', price: 59.99, quantity: 1, orderTotal: 59.99 },
                 { product: 'Controller', price: 49.99, quantity: 1, orderTotal: 49.99 },
@@ -69,16 +78,19 @@ app.service('resourcesService', function () {
         },
         {
             id: 4, firstName: 'Albert', lastName: 'Einstein', address: '8966 N. Crescent Dr.', city: 'New York City',
+            role: 'Developer',
             orders: [
                 { product: 'Baseball', price: 9.99, quantity: 5, orderTotal: 49.95 },
                 { product: 'Bat', price: 19.99, quantity: 1, orderTotal: 19.99 }
             ]
         },
         {
-            id: 5, firstName: 'Sonya', lastName: 'Williams', address: '55 S. Hollywood Blvd', city: 'Los Angeles'
+            id: 5, firstName: 'Sonya', lastName: 'Williams', address: '55 S. Hollywood Blvd', city: 'Los Angeles',
+            role: 'Developer'
         },
         {
             id: 6, firstName: 'Victor', lastName: 'Bryan', address: '563 N. Rainier St.', city: 'Seattle',
+            role: 'Developer',
             orders: [
                 { product: 'Speakers', price: 499.99, quantity: 1, orderTotal: 499.99 },
                 { product: 'iPod', price: 399.99, quantity: 1, orderTotal: 399.99 }
@@ -86,6 +98,7 @@ app.service('resourcesService', function () {
         },
         {
             id: 7, firstName: 'Lynette', lastName: 'Gonzalez', address: '25624 Main St.', city: 'Albuquerque',
+            role: 'Developer',
             orders: [
                 { product: 'Statue', price: 429.99, quantity: 1, orderTotal: 429.99 },
                 { product: 'Picture', price: 1029.99, quantity: 1, orderTotal: 1029.99 }
@@ -93,6 +106,7 @@ app.service('resourcesService', function () {
         },
         {
             id: 8, firstName: 'Erick', lastName: 'Pittman', address: '33 S. Lake Blvd', city: 'Chicago',
+            role: 'Developer',
             orders: [
                 { product: 'Book: AngularJS Development', price: 39.99, quantity: 1, orderTotal: 39.99 },
                 { product: 'Book: Basket Weaving Made Simple', price: 19.99, quantity: 1, orderTotal: 19.99 }
@@ -100,6 +114,7 @@ app.service('resourcesService', function () {
         },
         {
             id: 9, firstName: 'Alice', lastName: 'Price', address: '3354 Town', city: 'Cleveland',
+            role: 'Developer',
             orders: [
                 { product: 'Webcam', price: 85.99, quantity: 1, orderTotal: 85.99 },
                 { product: 'HDMI Cable', price: 39.99, quantity: 2, orderTotal: 79.98 }
@@ -107,13 +122,15 @@ app.service('resourcesService', function () {
         },
         {
             id: 10, firstName: 'Gerard', lastName: 'Tucker', address: '6795 N. 53 W. Bills Dr.', city: 'Buffalo',
+            role: 'Developer',
             orders: [
                 { product: 'Fan', price: 49.99, quantity: 4, orderTotal: 199.96 },
                 { product: 'Remote Control', price: 109.99, quantity: 1, orderTotal: 109.99 }
             ]
         },
         {
-            id: 11, firstName: 'Shanika', lastName: 'Passmore', address: '459 S. International Dr.', city: 'Orlando'
+            id: 11, firstName: 'Shanika', lastName: 'Passmore', address: '459 S. International Dr.', city: 'Orlando',
+            role: 'Developer'
         }
     ];
 

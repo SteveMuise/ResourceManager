@@ -1,7 +1,8 @@
 ﻿<div class="customers view">
     <div class="container">
         <header>
-            <h3>Resources</h3><button ng-click="toggleInputForm()">{{toggleInputFormButton}}</button>
+            <span style="font-size: 18pt;padding-top: 20px;">Resources</span>
+            <img src="/ResourceManager/Content/images/add_user.png" ng-click="toggleInputForm()" />
         </header>
         <div class="row" ng-show="showInputForm">
             <div class="span3">
@@ -28,7 +29,7 @@
             <div class="row cardContainer">
                 <div class="span3 card" data-ng-repeat="resource in resources | orderBy:'lastName'">
                     <button class="btn close cardClose" data-ng-click="deleteResource(resource.id)">&times;</button>
-                    <div class="cardHeader">{{resource.firstName + ' ' + resource.lastName}}</div>
+                    <div ng-class="{'Developer': 'cardDeveloper', 'Manager': 'cardManager'}[resource.role]">{{resource.firstName + ' ' + resource.lastName}}</div>
                     <div class="cardBody">{{resource.city}}</div>
                     <a href="#/customerorders/{{resource.id}}" class="cardBody btn-link">View {{ resource.orders.length }} Orders</a>
                 </div>
