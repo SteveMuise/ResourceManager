@@ -1,0 +1,38 @@
+﻿<div class="customers view">
+    <div class="container">
+        <header>
+            <h3>Resources</h3><button ng-click="toggleInputForm()">{{toggleInputFormButton}}</button>
+        </header>
+        <div class="row" ng-show="showInputForm">
+            <div class="span3">
+                First Name:
+                <br />
+                <input data-ng-model="newResource.firstName" type="text" placeholder="First Name">
+            </div>
+            <div class="span3">
+                Last Name:
+                <br />
+                <input data-ng-model="newResource.lastName" type="text" placeholder="Last Name">
+            </div>
+            <div class="span6">
+                City:
+                <br />
+                <input data-ng-model="newResource.city" type="text" placeholder="Customer City">
+                <button id="submitMate" class="btn btn-primary" type="button"
+                    data-ng-disabled="!newResource.firstName || !newResource.lastName || !newResource.city"
+                    data-ng-click="insertResource()">Add Resource</button>
+            </div>
+        </div>
+        <br /><br />
+        <div>
+            <div class="row cardContainer">
+                <div class="span3 card" data-ng-repeat="resource in resources | orderBy:'lastName'">
+                    <button class="btn close cardClose" data-ng-click="deleteResource(resource.id)">&times;</button>
+                    <div class="cardHeader">{{resource.firstName + ' ' + resource.lastName}}</div>
+                    <div class="cardBody">{{resource.city}}</div>
+                    <a href="#/customerorders/{{resource.id}}" class="cardBody btn-link">View {{ resource.orders.length }} Orders</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
