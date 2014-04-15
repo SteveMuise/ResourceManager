@@ -9,20 +9,22 @@ app.config(function ($routeProvider) {
                 templateUrl: '/ResourceManager/app/partials/Resources.html'
             })
         //Define a route that has a route parameter in it (:customerID)
-        .when('/customerorders/:resourceID',
+        .when('/resourceprojects/:resourceID',
             {
-                controller: 'CustomerOrdersController',
-                templateUrl: '/ResourceManager/app/partials/customerOrders.html'
+                controller: 'ResourceProjectsController',
+                templateUrl: '/ResourceManager/app/partials/ResourceProjects.html'
             })
         //Define a route that has a route parameter in it (:customerID)
-        .when('/orders',
+        .when('/projects',
             {
-                controller: 'OrdersController',
-                templateUrl: '/ResourceManager/app/partials/orders.html'
+                controller: 'ProjectsController',
+                templateUrl: '/ResourceManager/app/partials/Projects.html'
+            })
+        .when('/projectresources/:projectID',
+            {
+                controller: 'ProjectResourcesController',
+                templateUrl: '/ProjectResources.html'
             })
         .otherwise({ redirectTo: '/resources' });
 });
-
-
-
 

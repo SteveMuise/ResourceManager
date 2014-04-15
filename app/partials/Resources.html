@@ -3,6 +3,7 @@
         <header>
             <span style="font-size: 18pt;padding-top: 20px;">Resources</span>
             <img src="/ResourceManager/Content/images/add_user.png" ng-click="toggleInputForm()" />
+            <img src="/ResourceManager/Content/images/add_user.png" ng-click="togglePerfChart()" />
         </header>
         <div class="row" ng-show="showInputForm">
             <div class="span3">
@@ -16,12 +17,17 @@
                 <input data-ng-model="newResource.lastName" type="text" placeholder="Last Name">
             </div>
             <div class="span6">
-                City:
+                Role:
                 <br />
-                <input data-ng-model="newResource.city" type="text" placeholder="Customer City">
+                <input data-ng-model="newResource.role" type="text" placeholder="Role">
                 <button id="submitMate" class="btn btn-primary" type="button"
-                    data-ng-disabled="!newResource.firstName || !newResource.lastName || !newResource.city"
+                    data-ng-disabled="!newResource.firstName || !newResource.lastName || !newResource.role"
                     data-ng-click="insertResource()">Add Resource</button>
+            </div>
+        </div>
+        <div class="row" ng-show="showPerfChart">
+            <div class="span3">
+            Chart Goes Here
             </div>
         </div>
         <br /><br />
@@ -31,7 +37,7 @@
                     <button class="btn close cardClose" data-ng-click="deleteResource(resource.id)">&times;</button>
                     <div ng-class="{'Developer': 'cardDeveloper', 'Manager': 'cardManager'}[resource.role]">{{resource.firstName + ' ' + resource.lastName}}</div>
                     <div class="cardBody">{{resource.city}}</div>
-                    <a href="#/customerorders/{{resource.id}}" class="cardBody btn-link">View {{ resource.orders.length }} Orders</a>
+                    <a href="#/resourceprojects/{{resource.id}}" class="cardBody btn-link">View {{ resource.orders.length }} Tasks</a>
                 </div>
             </div>
         </div>

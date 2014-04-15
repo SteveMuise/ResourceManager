@@ -1,17 +1,16 @@
-﻿//This handles retrieving data and is used by controllers. 3 options (server, factory, provider) with 
-//each doing the same thing just structuring the functions/data differently.
+﻿
 app.service('resourcesService', function () {
     this.getResources = function () {
         return resources;
     };
 
-    this.insertResource = function (firstName, lastName, city) {
+    this.insertResource = function (firstName, lastName, role) {
         var topID = resources.length + 1;
         resources.push({
             id: topID,
             firstName: firstName,
             lastName: lastName,
-            city: city
+            role: role
         });
     };
 
@@ -38,7 +37,13 @@ app.service('resourcesService', function () {
         this.inputFormState = false;
       else
         this.inputFormState = true;
+    };
 
+    this.togglePerfChart = function(perfChartState){
+      if(perfChartState)
+        this.perfChartState = false;
+       else
+        this.perfChartState = true;
     };
 
     this.roleStyle = function(id){
@@ -133,5 +138,36 @@ app.service('resourcesService', function () {
             role: 'Developer'
         }
     ];
+});
 
+app.service('projectsService', function() {
+   this.getProjects = function () {
+       return projects;
+   };
+    this.getProject = function(id) {
+        for (var i = 0; i < projects.length; i++) {
+            if(projects[i].id === id) {
+                return projects[i];
+            }
+        }
+        return null;
+    };
+
+    var projects = [
+        {
+            id: 1, name: 'Carmel', description: 'Usability enhancements', managerId: 1, estEffort: 25, startDate: '4/30/2014',
+            status: [
+                { statusDate: '4/20/2014', status: 'Not Started', statusId: 1}
+            ],
+            tasks: [
+                { name: 'Add MailTo feature', description: 'On the home screen add a "Contact Us" icon that does a MailTo the web admin', assignedDev: 4, estEffort: 2, startDate: '4/30/2014', status: 'Not Started', statusId: 1, compDate: ''},
+                { name: 'Add Search feature', description: 'On the home screen add a "Search" icon that searches the web site', assignedDev: 10, estEffort: 5, startDate: '5/1/2014', status: 'Not Started', statusId: 1, compDate: ''},
+                { name: 'Add Share feature', description: 'On the home screen add a "Like" icon that adds a Facebook like', assignedDev: 11, estEffort: 10, startDate: '5/6/2014', status: 'Not Started', statusId: 1, compDate: ''},
+                { name: 'Add AdServer feature', description: 'Add a master banner to the website that shows our sold ad banners', assignedDev: 8, estEffort: 6, startDate: '5/1/2014', status: 'Not Started', statusId: 1, compDate: ''}
+
+            ]
+        }
+
+
+    ];
 });

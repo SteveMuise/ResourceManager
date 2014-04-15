@@ -4,36 +4,37 @@
     function init() {
         $scope.resources = resourcesService.getResources();
     }
-
     $scope.insertResource = function () {
         var firstName = $scope.newResource.firstName;
         var lastName = $scope.newResource.lastName;
-        var city = $scope.newResource.city;
-        resourcesService.insertResource(firstName, lastName, city);
+        var role = $scope.newResource.role;
+        resourcesService.insertResource(firstName, lastName, role);
         $scope.newResource.firstName = '';
         $scope.newResource.lastName = '';
-        $scope.newResource.city = '';
+        $scope.newResource.role = '';
     };
-
     $scope.deleteResource = function (id) {
         resourcesService.deleteResource(id);
     };
-    $scope.showInputForm = $scope.showInputForm;
-    $scope.toggleInputFormButton = "Show";
     $scope.toggleInputForm = function() {
         if ($scope.showInputForm != true) {
             $scope.showInputForm = true;
-            $scope.toggleInputFormButton = "Hide";
         }
         else
-        {
             $scope.showInputForm = false;
-            $scope.toggleInputFormButton = "Show";
-        }
     };
+    $scope.togglePerfChart = function(){
+      if ($scope.showPerfChart != true) {
+          $scope.showPerfChart = true;
+      }
+        else {
+          $scope.showPerfChart = false;
+      }
+  };
+
 });
 
-app.controller('CustomerOrdersController', function ($scope, $routeParams, resourcesService) {
+app.controller('ResourceProjectsController', function ($scope, $routeParams, resourcesService) {
     $scope.resource = {};
     $scope.ordersTotal = 0.00;
 
@@ -48,15 +49,11 @@ app.controller('CustomerOrdersController', function ($scope, $routeParams, resou
 
 });
 
-app.controller('OrdersController', function ($scope, resourcesService) {
-    $scope.resources = [];
-
-    //I like to have an init() for controllers that need to perform some initialization. Keeps things in
-    //one place...not required though especially in the simple example below
+app.controller('ProjectsController', function ($scope, projectsService) {
+    $scope.projects = [];
     init();
-
     function init() {
-        $scope.resources = resourcesService.getResources();
+        $scope.projects = projectsService.getProjects();
     }
 });
 
@@ -98,4 +95,12 @@ app.controller('OrderChildController', function ($scope) {
         $scope.orderby = orderby;
     };
 
+});
+
+app.controller('ProjectResourcesController', function ($scope, projectsService) {
+    $scope.projects = [];
+    init();
+    function init() {
+        $scope.projects = projectsService.getProjects();
+    }
 });
